@@ -1,0 +1,504 @@
+<style type="text/css">
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+font-family: "Lobster", serif;
+  font-weight: 400;
+  font-style: normal;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+  background: linear-gradient(180deg, #ff1e1e, #ff4d4d 30%, #b80000 70%, #8b0000);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for more depth */
+}
+
+
+.navbar {
+font-family: "Lobster", serif;
+  font-weight: 400;
+  font-style: normal;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  color: #fff;
+}
+
+.logo {
+font-family: "Lobster", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.nav-links {
+  font-family: "Lobster", serif;
+  font-weight: 400;
+  font-style: normal;
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  transition: all 0.5s ease;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links li a {
+font-family: "Lobster", serif;
+  font-weight: 400;
+  font-style: normal;
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #000; /* Gold for hover */
+}
+
+.nav-links li a::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: #ffd700;
+  width: 0%;
+  transition: width 0.3s;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background: #fff;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 200px;
+    background: linear-gradient(180deg, #ff4d4d, #ff6666 30%, #8b0000 70%, #660000);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    transition: right 0.3s ease-in-out;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+  }
+}
+
+section {
+    padding: 2em 1em;
+    max-width: 1200px;
+    margin: auto;
+}
+
+#about, #photos, #rates, #contact {
+    border-bottom: 2px solid lightgrey;
+}
+
+h1, h2 {
+font-family: "Lobster", serif;
+  font-weight: 400;
+  font-style: normal;
+    color: red;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+p, ul, form {
+    margin: 1em 0;
+}
+
+
+
+.rates-list {
+font-family: "Lobster", serif;
+  font-weight: 400;
+  font-style: normal;
+    list-style: none;
+    text-align: center;
+}
+
+.rates-list li {
+font-family: "Lobster", serif;
+  font-weight: 400;
+  font-style: normal;
+    font-size: 1.3em;
+    padding: 10px 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form label {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+form input, form textarea {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid grey;
+    border-radius: 4px;
+}
+
+form button {
+font-family: "Lobster", serif;
+  font-weight: 400;
+  font-style: normal;
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: darkred;
+}
+
+footer {
+font-family: "Lobster", serif;
+  font-weight: 400;
+  font-style: normal;
+    text-align: center;
+    padding: 20px;
+    background-color: black;
+    color: white;
+    font-size: 0.9em;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .photo-gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    form {
+        width: 100%;
+    }
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0 30px;
+}
+.container .thumbex {
+  margin: 10px 20px 30px;
+  width: 100%;
+  min-width: 250px;
+  max-width: 435px;
+  height: 300px;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow: hidden;
+  outline: 2px solid white;
+  outline-offset: -15px;
+  background-color: blue;
+  box-shadow: 5px 10px 40px 5px rgba(0, 0, 0, 0.5);
+}
+.container .thumbex .thumbnail {
+  overflow: hidden;
+  min-width: 250px;
+  height: 300px;
+  position: relative;
+  opacity: 0.88;
+  backface-visibility: hidden;
+  transition: all 0.4s ease-out;
+}
+.container .thumbex .thumbnail img {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  height: 115%;
+  width: auto;
+  transform: translate(-50%, -50%);
+  backface-visibility: hidden;
+}
+.container .thumbex .thumbnail span {
+  position: absolute;
+  z-index: 2;
+  top: calc(150px - 20px);
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px 50px;
+  margin: 0 45px;
+  text-align: center;
+  font-size: 24px;
+  color: white;
+  font-weight: 300;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: 0.2px;
+  transition: all 0.3s ease-out;
+}
+.container .thumbex .thumbnail:hover {
+  backface-visibility: hidden;
+  transform: scale(1.15, 1.15);
+  opacity: 1;
+}
+.container .thumbex .thumbnail:hover span {
+  opacity: 0;
+}
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.responsive-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.responsive-table th, 
+.responsive-table td {
+  padding: 12px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-right:transparent;
+  border-left:transparent;
+}
+
+.responsive-table th {
+  background-color: #f2f2f2;
+}
+
+@media (max-width: 600px) {
+  .responsive-table thead {
+    display: none;
+  }
+
+  .responsive-table, 
+  .responsive-table tbody, 
+  .responsive-table tr, 
+  .responsive-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .responsive-table tr {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .responsive-table td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  .responsive-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 10px;
+    font-weight: bold;
+    text-align: left;
+  }
+}
+
+
+
+
+</style>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+</style>
+
+<script type="text/javascript">
+// script.js
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.querySelector(".hamburger");
+  const navLinks = document.querySelector(".nav-links");
+
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navLinks.classList.toggle("active");
+  });
+});
+
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mona PDX | Independent Escort</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+         <nav class="navbar">
+      <div class="logo">Mona PDX</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+    </header>
+
+    <section id="about">
+        <h1>About Me</h1>
+        <p>I'm Mona. I'm a thirty something provider of erotic services, serving the Portland area for over 15 years.
+
+<p>I have made it my specialty catering to <b><u>YOUR</u></b> desires and helping you bring <b><u>YOUR</u></b> fantasies to life! You won't find any provider more open minded and adventurous than myself.
+
+<p>I'll try almost anything at least once and when I say <b><u>NO LIMITS</u></b>, I'm not playing around.
+
+<p>If you're interested in learning more about me and my experience in the industry, be sure to check out my articles over at <b><u>
+<a href="">SkipTheGames</a></u></b> and <b><u><a href="">Slixa</a></u></b>!</p><img src="mona-sig.png">
+    </section>
+<h2>Photos</h2>
+
+<div class="container">
+    <div class="thumbex">
+        <div class="thumbnail"><a href="javascript:void(0)"> <img src="selfie-2-thumb.png"/><span>BBBJ</span></a></div>
+    </div>
+    <div class="thumbex">
+        <div class="thumbnail"><a href="javascript:void(0)"><img src="crop-thumb.png"/><span>GREEK</span></a></div>
+    </div>
+    <div class="thumbex">
+        <div class="thumbnail"><a href="javascript:void(0)"><img src="selfie-thumb.png"/><span>GFE</span></a></div>
+    </div>
+</div>
+        
+        
+
+       
+    </section>
+
+    <section id="rates">
+         <div class="table-container">
+    <table class="responsive-table">
+      <thead>
+        <tr>
+          <th>Services</th>
+          <th>Rates</th>
+
+          
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Data 1</td>
+          <td>Data 2</td>
+
+          
+        </tr>
+        <tr>
+          <td>Data 5</td>
+          <td>Data 6</td>
+
+          
+        </tr>
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+  </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        
+
+<form action="send_email.php" method="post">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Mona PDX | Privacy and discretion assured.</p>
+    </footer>
+</body>
+</html>
